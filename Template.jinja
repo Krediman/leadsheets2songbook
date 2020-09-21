@@ -1,0 +1,9 @@
+\begin{song}{\VAR{metadata}}
+\BLOCK{for block in content}
+	\begin{\VAR{block.blocktyp}}
+	\BLOCK{for zeile in block.text}
+		\VAR{zeile}\\
+	\BLOCK{endfor}
+	\end{\VAR{block.blocktyp}}
+\BLOCK{endfor}
+\end{song}
