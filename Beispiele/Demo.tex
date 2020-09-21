@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{leadsheets} % für die Darstellung der Lieder
+\usepackage[T1, OT1]{fontenc}
+\usepackage{german}
+
+%######### Konfiguration von leadsheets ##########
+%Aussehen der Akkorde
+\setchords{%
+	format={\bfseries},%
+	minor={lowercase},%Mollakkorde in kleinbuchstaben
+	input-notation={german},%
+	output-notation={german}}
+
+% Definiere eine Umgebung refrain (statt chorus), um Ref.: vor dem refrain stehen zu haben.
+\newversetype{refrain} [name={Ref.}, after-label={:}]
+
+%### Template für den Titel: ###
+% Alternativer Titel (Für lieder mit mehr als einem bekannten tiiel.
+% kann zum beispiel als zusätzlicher Eintrag im Index erscheinen)
+\definesongproperty{alt-title}
+
+%## Template für den Titel (leadsheets liefert auch welche mit.)
+\definesongtitletemplate{demo}{{\large\songproperty{title}} \hfill Worte: \songproperty{lyrics} Weise: \songproperty{music}}
+
+%Aussehen der Seite
+\setleadsheets{title-template=demo, %Template auswählen
+	verse/numbered=true,%Automatische strophennummern. Stropfen ohne nummer mit verse*
+	verses-label-format={\large\bfseries},% labels fett und groß schreiben
+	info/format={\footnotesize\fontfamily{ptm}\selectfont\itshape}, %Zum erstellen von infoblocken (WIP)
+	empty-chord-dim={1em},% Beite unter Akkorden ohne text
+	align-chords={l}, %Akkorde linksbündig ausrichten
+	smash-chords=false, % Zusätzlicher Platz um Worte, wenn der Akkord zu lang ist.
+	before-song={}, % wird vor dem Titel ausgeführt
+	after-title={},  % wird nach dem Titel ausgeführt
+	after-song={},  % wird nach dem Text ausgeführt
+	bar-shortcuts=true} %erlaubt die verwendung von | und : in liedtexten als Musikzeichen (siehe Kap 8.5 und 13)
+
+
+\begin{document}
+	\include{Skelett}
+\end{document}
