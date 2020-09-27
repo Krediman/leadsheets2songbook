@@ -133,3 +133,4 @@ dmypy.json
 
 #quick test files
 test/
+examples/
