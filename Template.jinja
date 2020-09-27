@@ -1,9 +1,17 @@
-\begin{song}{\VAR{metadata}}
-\BLOCK{for block in content}
-	\begin{\VAR{block.blocktyp}}
-	\BLOCK{for zeile in block.text}
-		\VAR{zeile}\\
-	\BLOCK{endfor}
-	\end{\VAR{block.blocktyp}}
+\beginsong{\VAR{title}}[
+\BLOCK{for k, v in metadata.items()}
+	\VAR{k}={\VAR{v}},
 \BLOCK{endfor}
-\end{song}
+]
+
+\BLOCK{for block in content}
+
+\begin\VAR{block.blocktyp}
+\BLOCK{for zeile in block.text}
+\VAR{zeile}
+\BLOCK{endfor}
+\end\VAR{block.blocktyp}
+
+\BLOCK{endfor}
+
+\endsong

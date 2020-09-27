@@ -3,14 +3,10 @@
 Moll akkorde in kleinbuchstaben und mit m akzeptieren.
 Akkorde entsprechend konvertieren, sodass die Ausgabe ein konfigurierbares durchgehendes Schema hat.
 
-Weitere Parameter (Liedanfang, Alternativtitel, Tonart, tags, genre) in der Eingabe akzeptieren.
-
-BUG: Mehrer Akkorde über einem Wort (vermutlich ein bug in leadsheets)
-## Wichtig
-
 @info: -Blocke implementieren
 
-Statt leadsheets die songbook Bibliothek von latex verwenden
+BUG: Mehrere Akkorde über einem Wort -> Leadsheets issues
+## Wichtig
 
 ## Wäre schön
 
@@ -18,6 +14,6 @@ Daten aus der Konkordanz von "Zeitreisender" verwenden, fehlende Information dam
 
 ## Verrückte Idee
 
-Bilder mit angeben und unter das lied setzen, wenn denug Platz ist
+Bilder mit angeben und unter das lied setzen, wenn genug Platz ist
 
 

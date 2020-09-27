@@ -97,7 +97,7 @@ class texttype():
     def __str__(self):
         erg = ''
         for i in range(len(self.data)):
-            erg += self.data[i][0]
+            erg += self.data[i][0]+'\n'
         return erg
     
     def __len__(self):

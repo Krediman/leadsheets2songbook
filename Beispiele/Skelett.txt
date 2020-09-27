@@ -1,4 +1,20 @@
-Titel des Liedes (Der Dicher ; Der Musiker)
+Titel des Liedes [<erste zeile>]
+wuw: Worte und Weise falls es die gleiche Person ist
+jahr: jahr für worte und weise, alternativ j:
+mel: Autor der Melodie
+melj: jahr der Melodie. Alternativ meljahr
+txt: Autor des Textes
+txtj: Jahr des Textes
+alb: Album (für Kommerzkacke)
+lager: Lager auf dem Das Lied geschrieben wurde
+bo: Seite im Bock
+vq: vasquaner (1)
+biest:
+tf: Turmfalke
+gb: Gnorkenbüdel
+HVP: Heinrich von Plauen
+tb: Tarmina Burgundi
+
 
     a      e     F           C
 1) Das hier ist die erste Strophe,

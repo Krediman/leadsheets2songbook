@@ -5,6 +5,8 @@ import re
 _typen = dict(Überschrift="Überschrift", Leer="Leer", Akkordzeile="Akkordzeile", Textzeile="Textzeile",
               Info="Info")
 
+_Ueber_starts = set("wuw jahr j mel melodie weise melj meljahr txt worte text txtj wortej wortejahr textj txtjahr textjahr alb album lager bo bock vq vasquaner biest tf turmfalke gb gnorkenbüdel gnorken hvp tb burgundi tarmina hk holz holzknopp".split())
+
 # Regex - Ausdrücke, die für die erkennung gebraucht werden.
 akkord_zeilen_regex = r"( *([:|]+|(\(?([A-Ha-h](#|b)?(sus|dim|add|maj)?\d*)(\/([A-Ha-h](#|b)?(sus|dim|add|maj)?\d*))*\)?)))+ *"
 akkord_regex = r"(\(?([A-Ha-h](#|b)?(sus|dim|add|maj)?\d*)(\/([A-Ha-h](#|b)?(sus|dim|add|maj)?\d*))*\)?)"
@@ -108,19 +110,25 @@ def p_Ueberschrift(line, lineNr, prev):
     # prev:      Die typen der vorhergehenden lineNr Zeilen
     
     # Ausgabe: warscheinlichkeit, dasss line eine Überschrift ist.
-    #print('#', line, '\t', lineNr, '\t', prev) //Debugging
-    if lineNr > 1: return 0                      # Zeile ist nicht am Anfang
+    if len(prev) != 0:
+        #prüfe, ob die vorherigen zeilen entweder leer, none oder überschrift sind.
+        if 0 != len(set(prev[i][1] for i in range(len(prev))).difference({"Überschrift", None})):
+            return 0 # Das lied hat bereits begonnen
+
     if line.replace(' ', '') == '': return 0     # Zeile ist leer
     p = 0.5
-    if line.count("[") == line.count("]") and line.count("(") == line.count(")"):
-        p += 0.2
-        if line.count("[") >= 1:             # Alternativtitel
-            p += 0.3
-    else:   #Klammerausdruck ist nicht balancliert
-        print ("Vermutlich ein Tippfehler in der ersten Zeile")
-    if lineNr==1 and 'Überschrift' in prev[-1]:
-        print(prev, prev[-1]) # Debugging
-        p -= 0.5
+    if lineNr <= 1:
+        # erste zeile: hier stehen titel und alt. titel
+        if line.count("[") == line.count("]"):
+            if line.count("[") == 1:
+                return 1
+            else: 
+                return 0.75
+        else:   #Klammerausdruck ist nicht balancliert
+            print ("Vermutlich ein Tippfehler in der ersten Zeile")
+    for start in _Ueber_starts:
+        if line.lower().startswith(start+':'):
+            return 1
     return p
 
 
